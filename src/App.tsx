@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import HomePage from './features/Home/Home.page';
+import { HomePage } from './modules/home/Home.page';
 
-import './app.scss';
+import './theme/theme.scss';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <div className="app">
@@ -15,5 +15,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;

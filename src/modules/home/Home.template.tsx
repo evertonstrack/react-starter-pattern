@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HomeTemplate = (props: any) => {
+export const HomeTemplate = (props: any) => {
 
   const { data } = props;
 
@@ -14,6 +14,4 @@ const HomeTemplate = (props: any) => {
       )}  
     </ul>
   );
-};
-
-export default HomeTemplate;
+}

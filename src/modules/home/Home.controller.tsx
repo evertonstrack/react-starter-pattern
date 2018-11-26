@@ -1,9 +1,8 @@
-/// <reference path="./Home.api.tsx" />
-
 import { Component } from 'react';
-import { IHomeProps, IHomeState } from './Home.api';
+import { IHomeProps, IHomeState } from './Home.types';
+import Bind from './../../core/decorators/bind';
 
-class HomeController extends Component<IHomeProps, IHomeState> {
+export class HomeController extends Component<IHomeProps, IHomeState> {
 
   constructor(props: IHomeProps) {
     super(props);
@@ -23,6 +22,12 @@ class HomeController extends Component<IHomeProps, IHomeState> {
       .catch(err => console.log(err));
   }
 
+  @Bind
+  add() {
+
+    console.log('aqui')
+  }
+
   render() {
 
     return (
@@ -30,5 +35,3 @@ class HomeController extends Component<IHomeProps, IHomeState> {
     );
   }
 }
-
-export default HomeController;
