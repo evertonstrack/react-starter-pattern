@@ -1,6 +1,7 @@
 import React from 'react';
+import { IButton } from './Button.types';
 
-export const Button = (props: any) => {
+export const Button = (props: IButton) => {
 
   const { label, type } = props;
 
@@ -9,7 +10,7 @@ export const Button = (props: any) => {
       className="button"
       type={type || 'button'}
     >
-      {label}
+      {label && label}
     </button>
   );
 }
