@@ -1,37 +1,54 @@
-import { Component } from 'react';
-import { IHomeProps, IHomeState } from './Home.types';
+import { IHomeControllerProps } from './Home.types';
 import Bind from './../../core/decorators/bind';
+import { Controller } from '../../core/controller/controller';
 
-export class HomeController extends Component<IHomeProps, IHomeState> {
+const initialState = {
+  isLoading: true,
+  list: [],
+  selected: null
+};
 
-  constructor(props: IHomeProps) {
-    super(props);
-
-    this.state = {
-      data: [],
-      isLoading: true
-    }
-  }
+export class HomeController extends Controller<IHomeControllerProps, typeof initialState> {
+  readonly state = initialState;
 
   componentDidMount() {
 
     fetch('./mock-list.json')
       .then(res => res.json())
-      .then(data => this.setState({ data }))
-      .then(() => this.setState({ isLoading: false }))
+      .then(list =>
+        this.setState({
+          list,
+          isLoading: false
+        })
+      )
       .catch(err => console.log(err));
   }
 
   @Bind
-  add() {
+  select({ currentTarget }) {
+    const index = currentTarget.dataset.id;
 
-    console.log('aqui')
+    if (index) {
+      this.setState(prevState => ({
+        selected: prevState.list[index]
+      }));
+      console.log(this.state.selected)
+    }
   }
 
   render() {
 
-    return (
-      !this.state.isLoading && this.props.children(this.state)
-    );
+    const renderProps = {
+      data: {
+        list: this.state.list,
+        language: this.props.lang,
+      },
+      methods: {
+        select: this.select
+      }
+    };
+
+    return this.props.children(renderProps);
   }
+
 }

@@ -1,11 +1,20 @@
-import { ReactNode } from 'react';
+import { ControllerProps, RenderProps } from '../../core/controller/controller';
 
-export interface IHomeProps {
-  children: (data: IHomeState) => ReactNode,
+export interface IHomeControllerProps extends ControllerProps {
+  lang: string;
 }
 
+export interface IHomeRenderProps extends RenderProps {
+  data: {
+    list: Post[]
+    language: string
+  }
+  methods: {
+    select: any
+  }
+}
 
-export interface IHomeState {
-  data: Array<any>,
-  isLoading: Boolean
+interface Post {
+  title: string;
+  subtitle: string;
 }

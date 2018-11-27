@@ -13,7 +13,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "noImplicitAny": false
   },
   "include": [
     "src"
