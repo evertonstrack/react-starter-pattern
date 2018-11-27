@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { HomeController } from './Home.controller';
 import { HomeTemplate } from './Home.template';
 import { IHomeState } from './Home.types';
