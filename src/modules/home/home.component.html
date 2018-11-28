@@ -1,0 +1,10 @@
+<template>
+  <ul>
+    <repeat for-each="{{ props.ctrl.state.list }}" as="item">
+      <li key="{{ item.title }}" onClick="{{ props.ctrl.select }}">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.subtitle }}</p>
+      </li>
+    </repeat>
+  </ul>
+</template>

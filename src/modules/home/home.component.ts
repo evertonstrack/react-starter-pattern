@@ -1,8 +1,6 @@
 import { Component } from 'react';
 import { Controller, Bind } from '../../core/structure';
 
-import { HomeTemplate } from './Home.template';
-
 const initialState = {
   isLoading: true,
   list: [],
@@ -10,9 +8,10 @@ const initialState = {
 };
 
 @Controller({
-  template: HomeTemplate,
+  // @ts-ignore
+  template: import('./home.component.html'),
 })
-export class HomePage extends Component<{}, typeof initialState> {
+export class HomeComponent extends Component<{}, typeof initialState> {
   readonly state = initialState;
 
   componentDidMount() {

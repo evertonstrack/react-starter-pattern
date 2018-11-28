@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HomePage } from './modules/home/Home.page';
+import { HomeComponent } from './modules/home/home.component';
 
 import './theme/theme.scss';
 
@@ -10,7 +10,7 @@ export class App extends Component {
         <header className="app-header">
           <h1>React Stater Pattern</h1>
         </header>
-        <HomePage />
+        <HomeComponent />
       </div>
     );
   }

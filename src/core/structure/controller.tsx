@@ -2,17 +2,21 @@ import React from 'react';
 
 export function Controller(options): ClassDecorator {
   return function decorateController<T>(Class): any {
-    const View = options.template;
     return class extends Class {
+      View: Function | null = null;
       constructor(props) {
         super(props);
+        options.template.then(v => {
+          this.View = v.default;
+          this.setState({});
+        });
       }
 
       render() {
-        return <View ctrl={this}/>
+        const { View } = this;
+        // @ts-ignore
+        return View && <View ctrl={this} />
       }
     };
   }
 }
-
-export type Template<Ctrl> = (props: { ctrl: Ctrl }) => JSX.Element;

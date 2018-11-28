@@ -13,7 +13,9 @@
     "noEmit": true,
     "jsx": "preserve",
     "experimentalDecorators": true,
-    "noImplicitAny": false
+    "isolatedModules": true,
+    "noImplicitAny": false,
+    "lib": [ "es2015", "dom" ]
   },
   "include": [
     "src"
