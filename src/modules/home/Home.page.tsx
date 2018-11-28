@@ -1,19 +1,19 @@
 import { Component } from 'react';
-import { Controller, Bind } from '../../core/structure';
+import { Controller, Action } from '../../core/structure';
 
 import { HomeTemplate } from './Home.template';
-
-const initialState = {
-  isLoading: true,
-  list: [],
-  selected: null
-};
 
 @Controller({
   template: HomeTemplate,
 })
-export class HomePage extends Component<{}, typeof initialState> {
-  readonly state = initialState;
+export class HomePage extends Component<{}, typeof HomePage.initialState> {
+  static initialState = {
+    isLoading: true,
+    list: [],
+    selected: null
+  };
+
+  readonly state = HomePage.initialState;
 
   componentDidMount() {
     fetch('./mock-list.json')
@@ -27,7 +27,7 @@ export class HomePage extends Component<{}, typeof initialState> {
       .catch(err => console.log(err));
   }
 
-  @Bind
+  @Action
   select({ currentTarget }) {
     const index = currentTarget.dataset.id;
 
